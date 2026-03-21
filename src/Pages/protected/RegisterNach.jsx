@@ -63,8 +63,8 @@ function RegisterNach() {
     const req = {
       success_url: `${location.origin}/success`,
       failure_url: `${location.origin}/failure`,
-      // amount: userInfo?.getAssignProduct[0]?.loan_amount * 4,
-      amount: 10,
+      amount: userInfo?.getAssignProduct[0]?.loan_amount * 4,
+      // amount: 10,
       email: userInfo?.personalInfo[0]?.email_id,
       phone: userInfo?.mobile_number,
       frequency: "daily",
