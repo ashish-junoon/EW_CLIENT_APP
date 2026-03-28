@@ -14,7 +14,11 @@ function MakePayment() {
     const didFetchRef = useRef(false);
 
     const isPaymentComplete = paymentInfo?.isPaymentDone;
-
+    
+    const date = new Date();
+    date.setDate(date.getDate() + 10);
+    const ExpiryDate = date.toLocaleDateString("en-GB").replace(/\//g, "-");    
+    
     const getPaymentInfo = async () => {
         const payload = {
             lead_id: leadId,
@@ -57,41 +61,75 @@ function MakePayment() {
     }
 
     // Payment Process
+    // const handlePayment = async () => {
+    //     setIsLoading(true);
+
+    //     const request = {
+    //         amount: paymentInfo?.emiToPayment?.totalEmiToPay,
+    //         reference_id: leadId,
+    //         description: "Making Payment by email URL",
+    //         customer: {
+    //             name: paymentInfo?.name,
+    //             contact: paymentInfo?.mobile_number,
+    //             email: paymentInfo?.email_id,
+    //         },
+    //         notify: {
+    //             sms: true,
+    //             email: true
+    //         },
+    //         options: {
+    //             checkout: {
+    //                 name: import.meta.env.VITE_FULL_PRODUCT_NAME
+    //             }
+    //         },
+    //         notes: {
+    //             policy_name: `${leadId}-${loanId}-${paymentInfo?.name}`
+    //         },
+    //         callback_url: import.meta.env.VITE_URLPAY_BACKURL,
+    //         company_id: import.meta.env.VITE_COMPANY_ID,
+    //         product_name: import.meta.env.VITE_PRODUCT_NAME
+    //     };
+
+    //     try {
+    //         const response = await CreatePaymentLink(request);
+
+    //         if (response.status && response.data?.short_url) {
+    //             // Redirect directly
+    //             window.location.replace(response.data.short_url);
+    //         } else {
+    //             toast.error(response.message || "Failed to create payment link.");
+    //             setIsLoading(false);
+    //         }
+    //     } catch (error) {
+    //         console.error("Error creating payment link:", error);
+    //         toast.error("An error occurred while creating payment link.");
+    //         setIsLoading(false);
+    //     }
+    // };
+
     const handlePayment = async () => {
         setIsLoading(true);
 
         const request = {
-            amount: paymentInfo?.emiToPayment?.totalEmiToPay,
-            reference_id: leadId,
-            description: "Making Payment by email URL",
-            customer: {
-                name: paymentInfo?.name,
-                contact: paymentInfo?.mobile_number,
-                email: paymentInfo?.email_id,
-            },
-            notify: {
-                sms: true,
-                email: true
-            },
-            options: {
-                checkout: {
-                    name: import.meta.env.VITE_FULL_PRODUCT_NAME
-                }
-            },
-            notes: {
-                policy_name: `${leadId}-${loanId}-${paymentInfo?.name}`
-            },
-            callback_url: import.meta.env.VITE_URLPAY_BACKURL,
-            company_id: import.meta.env.VITE_COMPANY_ID,
-            product_name: import.meta.env.VITE_PRODUCT_NAME
+            email: paymentInfo?.email_id,
+            name: paymentInfo?.name,
+            amount: String(paymentInfo?.emiToPayment?.totalEmiToPay),
+            phone: paymentInfo?.mobile_number,
+            message: "COLLECTION",
+            vandor_code: "",
+            lead_id: leadId,
+            loan_id: loanId,
+            company_id : import.meta.env.VITE_COMPANY_ID,
+            product_code : import.meta.env.VITE_PRODUCT_NAME,
+            expiry_date : ExpiryDate
         };
 
         try {
             const response = await CreatePaymentLink(request);
 
-            if (response.status && response.data?.short_url) {
+            if (response.status && response.data?.payment_url) {
                 // Redirect directly
-                window.location.replace(response.data.short_url);
+                window.location.replace(response.data.payment_url);
             } else {
                 toast.error(response.message || "Failed to create payment link.");
                 setIsLoading(false);
@@ -102,6 +140,7 @@ function MakePayment() {
             setIsLoading(false);
         }
     };
+
 
     return (
         <div className="h-screen flex justify-center items-center">

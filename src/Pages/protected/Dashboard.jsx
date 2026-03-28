@@ -389,7 +389,7 @@ function Dashboard() {
                     loading ? <BtnLoader width={20} height={20} /> : "validate"
                   }
                   type={loading ? "button" : "submit"}
-                  style={`py-2 mt-1 ml-2 ${loading ? "bg-blue-300" : "bg-secondary"} text-black px-4 uppercase text-xs font-bold`}
+                  style={`py-2 mt-1 ml-2 ${loading ? "bg-blue-300" : "bg-secondary"} text-white px-4 uppercase text-xs font-bold`}
                   disabled={loading}
                 />
               </div>

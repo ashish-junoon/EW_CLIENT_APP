@@ -566,9 +566,19 @@ export const CreatePaymentLinkEaseBuzz = async (req) => {
 
 
 //Create Payment request
+// export const CreatePaymentLink = async (req) => {
+//     try {
+//         const response = await api.post("/PayProvider/PaymentLinks", req);
+//         return response.data;
+//     } catch (error) {
+//         console.error("Get Bank Name error:", error.response?.data || error.message);
+//         throw error;
+//     }
+// }
+
 export const CreatePaymentLink = async (req) => {
     try {
-        const response = await api.post("/PayProvider/PaymentLinks", req);
+        const response = await api.post("/EasebuzzIntegration/CreatePaymentLink", req);
         return response.data;
     } catch (error) {
         console.error("Get Bank Name error:", error.response?.data || error.message);
