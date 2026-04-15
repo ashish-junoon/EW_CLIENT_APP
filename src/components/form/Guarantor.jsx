@@ -113,20 +113,20 @@ const Guarantor = ({ onSubmit }) => {
                 guarantor: [
                     {
                         type: "Guarantor",
-                        name: values.guarantorName1,
-                        mobile_number: values.mobile_number1,
+                        name: values.guarantorName1?.trim(),
+                        mobile_number: values.mobile_number1?.trim(),
                         relation: values.relation1,
                     },
                     {
                         type: "Guarantor",
-                        name: values.guarantorName2,
-                        mobile_number: values.mobile_number2,
+                        name: values.guarantorName2?.trim(),
+                        mobile_number: values.mobile_number2?.trim(),
                         relation: values.relation2,
                     },
                     {
                         type: "Nominee",
-                        name: values.nomineeName,
-                        mobile_number: values.nomineeMobile,
+                        name: values.nomineeName?.trim(),
+                        mobile_number: values.nomineeMobile?.trim(),
                         relation: values.nomineeRelation,
                     }
                 ]

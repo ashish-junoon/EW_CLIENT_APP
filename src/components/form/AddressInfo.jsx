@@ -82,10 +82,10 @@ const AddressInfo = ({ onSubmit }) => {
             const userRequest = {
                 lead_id: loggedUser?.lead_id || localData?.lead_id,
                 house_type: values.houseType,
-                address: values.address,
+                address: values.address?.trim(),
                 district: values.district,
                 state: values.state,
-                zip_code: values.zipCode,
+                zip_code: values.zipCode?.trim(),
             };
 
             try {

@@ -91,7 +91,7 @@ const KYCInfo = ({ onSubmit }) => {
 
                 const userRequest = {
                     lead_id: loggedUser?.lead_id || localData?.lead_id,
-                    aadhaar_number: values.adharNumber,
+                    aadhaar_number: values.adharNumber?.trim(),
                     aadhaar_front_image_name: values.adharFront?.name,
                     aadhaar_front_image_extn: values.adharFront?.name?.split('.').pop(),
                     aadhar_front_data: adharFrontBase64 ? adharFrontBase64.split(",")[1] : null,
@@ -100,7 +100,7 @@ const KYCInfo = ({ onSubmit }) => {
                     aadhaar_back_image_extn: values.adharBack?.name?.split('.').pop(),
                     aadhar_back_data: adharBackBase64 ? adharBackBase64.split(",")[1] : null,
 
-                    pan_card_number: values.panNumber,
+                    pan_card_number: values.panNumber?.trim(),
                     pan_card_img_name: values.panCard?.name,
                     pan_card_img_extn: values.panCard?.name?.split('.').pop(),
                     pancard_data: panCardBase64 ? panCardBase64.split(",")[1] : null,

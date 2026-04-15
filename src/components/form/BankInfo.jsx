@@ -91,9 +91,9 @@ const BankInfo = ({ onSubmit }) => {
                 const userRequest = {
                     lead_id: loggedUser?.lead_id || localData?.lead_id,
                     bank_name: values.bankName,
-                    account_holder_name: values.accountHolder,
-                    account_number: values.accountNumber,
-                    ifsc_code: values.ifscCode,
+                    account_holder_name: values.accountHolder?.trim(),
+                    account_number: values.accountNumber?.trim(),
+                    ifsc_code: values.ifscCode?.trim(),
                     bank_statement_image_name: values.bankStatement?.name,
                     bank_statement_image_extn: values.bankStatement?.name?.split('.').pop(),
                     bank_statement_data: bankStatementBase64 ? bankStatementBase64.split(',')[1] : null,

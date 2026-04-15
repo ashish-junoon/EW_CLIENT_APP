@@ -65,11 +65,11 @@ const PersonalInfo = ({ onSubmit }) => {
         user_id: loggedUser?.user_id,
         company_id: import.meta.env.VITE_COMPANY_ID,
         product_name: import.meta.env.VITE_PRODUCT_NAME,
-        full_name: values.fullName,
+        full_name: values.fullName?.trim(),
         gender: values.gender,
         marital_status: values.maritalStatus,
         birth_date: values.birthDate,
-        email: values.email,
+        email: values.email?.trim(),
       };
 
       try {
