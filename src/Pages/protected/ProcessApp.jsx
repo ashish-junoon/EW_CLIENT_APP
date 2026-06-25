@@ -7,6 +7,7 @@ import StartKYC from "./StartKYC";
 import { useUserInfoContext } from "../../components/context/UserInfoContext";
 import { useAuth } from "../../components/context/AuthContext";
 import VideoRecorder from "../../components/utils/VideoRecorder";
+import RegisterNachUpi from "./RegisterNachUpi";
 
 function ProcessApp() {
   const [kycDone, setKycDone] = useState(false);

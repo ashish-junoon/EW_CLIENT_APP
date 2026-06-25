@@ -184,7 +184,7 @@ const VideoRecorder = ({ }) => {
           video_kyc_verified: true,
         }));
       } else {
-        toast.error("Video Kyc Upload Failed!");
+        toast.error(response.message || "Video Kyc Upload Failed!");
       }
     } catch (error) {
       console.error("Error in Kyc Upload : ", error);

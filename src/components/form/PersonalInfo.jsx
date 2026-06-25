@@ -38,10 +38,14 @@ const PersonalInfo = ({ onSubmit }) => {
       email: presonal?.email_id || "",
     },
     validationSchema: Yup.object({
+      // fullName: Yup.string()
+      //   .min(3, "Must be 3 characters or more")
+      //   .max(50, "Must be 50 characters or less")
+      //   .required("Required"),
       fullName: Yup.string()
-        .min(3, "Must be 3 characters or more")
-        .max(50, "Must be 50 characters or less")
-        .required("Required"),
+        .trim()
+        .matches(/^[A-Za-z]+(?: [A-Za-z]+)*$/, "Enter valid name").min(3).max(50)
+        .required("Name is required"),
       gender: Yup.string().required("Required"),
       maritalStatus: Yup.string().required("Required"),
       birthDate: Yup.string()

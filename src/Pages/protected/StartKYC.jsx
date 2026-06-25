@@ -47,11 +47,11 @@ function StartKYC() {
         window.location.href = data?.data?.url;
       } else {
         toast.error(data.message || "Adhar Varification Failed!");
+        setValidating(false);
       }
     } catch (error) {
       toast.error("Something went wrong. Please try again.");
       console.error("Error verifying Aadhaar:", error);
-    } finally {
       setValidating(false);
     }
   };

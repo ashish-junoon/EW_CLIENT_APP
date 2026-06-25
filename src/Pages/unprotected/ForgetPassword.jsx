@@ -326,7 +326,7 @@ function ForgetPassword() {
                                 btnName="Submit"
                                 btnIcon="RiArrowRightLine"
                                 type="submit"
-                                style="mt-4 py-1 bg-secondary text-black hover:bg-secondary w-full"
+                                style="mt-4 py-1 bg-secondary text-black hover:bg-secondary w-full text-white"
                             />
                         </div>
                     </form>
